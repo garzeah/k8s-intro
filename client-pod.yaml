@@ -1,0 +1,14 @@
+apiVersion: v1 # Defines type of objects we can use in the version
+kind: Pod # Runs one or more closely related containers
+metadata:
+  name: client-pod
+  # Used to link different objects
+  labels:
+    component: web # Can be any key/value pair
+spec:
+  # Listing out the containers we want to run in the pod
+  containers:
+    - name: client
+      image: stephengrider/multi-client
+      ports:
+        - containerPort: 3000 # Receives traffic from the NodePort

@@ -1,0 +1,15 @@
+apiVersion: v1 # Defines type of objects we can use in the version
+kind: Service # Sets up networking in a Kubernetes Cluster
+metadata:
+  name: client-node-port
+spec:
+  # Some types of services we can make are ClusterIP, NodePort, LoadBalancer, Ingress
+  type: NodePort # Exposes a container to the outside world (only good for development purposes)
+  ports:
+    - port: 3050 # Allows other pods to connect to our current pod
+      targetPort: 3000 # Sends any incoming traffic to designated pod
+      nodePort: 31515 # Allows us to access a pod from our browser usually between (30000 - 32767)
+  # Used to link different objects, looks for all objects that have the same
+  # key/value pair and exposes all the ports above on those corresponding objects
+  selector:
+    component: web
