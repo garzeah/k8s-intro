@@ -8,7 +8,7 @@ metadata:
 spec:
   # Listing out the containers we want to run in the pod
   containers:
-    - name: client
-      image: stephengrider/multi-client
+    - name: worker
+      image: stephengrider/multi-worker
       ports:
-        - containerPort: 3000 # Receives traffic from the NodePort
+        - containerPort: 9999 # Receives traffic from the NodePort
